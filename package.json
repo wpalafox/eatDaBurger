@@ -21,5 +21,12 @@
   "bugs": {
     "url": "https://github.com/wpalafox/eatDaBurger/issues"
   },
-  "homepage": "https://github.com/wpalafox/eatDaBurger#readme"
+  "homepage": "https://github.com/wpalafox/eatDaBurger#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "express-handlebars": "^3.0.0",
+    "method-override": "^2.3.7",
+    "mysql": "^2.12.0"
+  }
 }
