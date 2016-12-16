@@ -2,6 +2,7 @@ var connection = require("./connection.js");
 
 
 // Question Mark function that adheres to SQL syntax
+/*
 function printQuestionMarks(num){
 	var arr = [];
 
@@ -13,29 +14,22 @@ function printQuestionMarks(num){
 	return arr.toString();
 
 
-}
+}  */
 
 // Helper function for SQL syntax.
+
+
 function objToSql(ob) {
-  var arr = [];
+	// column1=value, column2=value2,...
+	var arr = [];
 
-  for (var key in ob) {
-    
-    if (Object.hasOwnProperty.call(ob, key)) {
-      
-      arr.push(key + "=" + ob[key]);
-    }
-  }
+	for (var key in ob) {
+		if (ob.hasOwnProperty(key)) {
+			return key + '=' + ob[key];
+		}
+	}
 
-  return arr.toString();
 }
-
-
-
-
-
-
-
 
 
 var orm = {  
@@ -63,12 +57,10 @@ var orm = {
 			queryString += cols.toString();
 			queryString += ") ";
 			queryString +='VALUES (';
-			queryString += printQuestionMarks(vals.length);
+			queryString += '?';
 			queryString += ") ";
 
 			console.log(queryString); 
-
-			connection.query()
 
 			connection.query(queryString, vals, function(err, res) {
 		      if (err) {
