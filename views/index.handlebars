@@ -1,0 +1,45 @@
+<div class="container">
+  
+  <h1 align="center"><img src="http://www.tastyburger.com/wp-content/themes/tastyBurger/images/home/img-large-burger.jpg"></h1>
+  
+
+  <h1 align="center"><strong>Eat-Da-Burger!</strong></h1>
+
+  <div class="row">
+
+    <div class="col-sm-6">
+      <h2>Burgers Ready to Eat!</h2>
+      {{#each burgerz}}
+        {{#unless this.devoured}}
+          <form id="update" action="/burgerz/devour/{{this.id}}?_method=PUT" method="POST">
+            <input type="hidden" name="devoured" value="true">
+            <button class="btn btn-danger" type="submit">Devour it!</button>
+          </form>
+          <div class="burgerZone">
+            <h4>{{this.id}}. {{this.burgerName}}</h4>
+          </div>
+        {{/unless}}
+      {{/each}}
+    </div>
+
+    <div class="col-sm-6">
+      
+      
+      <h2>Burgers Devoured!</h2>
+      {{#each burgerz}}
+        {{#if this.devoured}}
+          <div class="devouredZone">
+            <h3>{{this.id}}. {{this.burgerName}}</h3>
+          </div>
+        {{/if}}
+      {{/each}}
+      </div>
+
+  </div>
+
+  <h2>Enter a burger you want to eat then click "Submit"</h2>
+  
+  <form id="add" action="/burgerz/add" method="POST">
+    <textarea name="burgerName"></textarea>
+    <button class="btn btn-warning" type="submit">Submit</button>
+  </form>

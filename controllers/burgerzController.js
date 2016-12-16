@@ -11,7 +11,7 @@ router.get("/", function(req, res){
 
 router.get("/burgerz", function(req, res){
 	burger.selectAll(function(data){
-		var hbsObject = { burgers:data };
+		var hbsObject = { burgerz:data };
 		res.render('index', hbsObject);
 
 
@@ -33,10 +33,9 @@ router.post('/burgerz/add', function(req, res){
 
 router.put('/burgerz/devour/:id', function (req, res){
 	var condition = "id= " + req.params.id;
+		console.log("condition", condition);
 
-	console.log("condition", condition);
-
-	burger.updateOne({ devoured: req.body.devoured }, condition, function() {
+	burger.updateOne({ devoured: req.body.devoured }, condition, function(){
 				res.redirect('/burgerz');
 
 	});
